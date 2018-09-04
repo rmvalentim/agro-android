@@ -1,6 +1,6 @@
 package br.com.rafaelvalentim.agro.Model;
 
-public class Cultura {
+public class OperacaoAgricola {
 
     private Long id;
 
@@ -24,6 +24,6 @@ public class Cultura {
     }
 
     public String toString(){
-        return this.getId() + "- " + this.getDescricao();
+        return this.getId() + "- " +  this.getDescricao();
     }
 }

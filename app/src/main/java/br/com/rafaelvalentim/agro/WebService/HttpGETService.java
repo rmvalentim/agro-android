@@ -40,7 +40,7 @@ public class HttpGETService extends AsyncTask<Void, Void, String> {
                 // Scanner que irá ler os dados de retorno da requisição HTTP
                 Scanner scanner = new Scanner(url.openStream());
                 while (scanner.hasNext()){
-                    resposta.append(scanner.next());
+                    resposta.append(scanner.useDelimiter("\\A").next());
                 }
 
             } catch (MalformedURLException e) {
