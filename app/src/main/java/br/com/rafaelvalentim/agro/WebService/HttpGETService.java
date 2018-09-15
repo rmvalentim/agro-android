@@ -1,6 +1,7 @@
 package br.com.rafaelvalentim.agro.WebService;
 
 import android.os.AsyncTask;
+import android.util.Base64;
 
 import com.google.gson.Gson;
 
@@ -35,6 +36,8 @@ public class HttpGETService extends AsyncTask<Void, Void, String> {
                 connection.setDoOutput(true);
                 connection.setConnectTimeout(5000);
                 // Realiza a conexão
+
+                System.out.println(connection.toString());
                 connection.connect();
 
                 // Scanner que irá ler os dados de retorno da requisição HTTP

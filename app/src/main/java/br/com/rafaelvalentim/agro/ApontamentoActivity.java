@@ -1,6 +1,7 @@
 package br.com.rafaelvalentim.agro;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,7 +14,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+
 import br.com.rafaelvalentim.agro.Model.ApontamentoAPI;
+import br.com.rafaelvalentim.agro.Service.ApontamentoService;
 import br.com.rafaelvalentim.agro.Service.BoletimService;
 import br.com.rafaelvalentim.agro.Service.CulturaService;
 import br.com.rafaelvalentim.agro.Service.EquipamentoService;
@@ -21,6 +28,7 @@ import br.com.rafaelvalentim.agro.Service.OperacaoAgricolaService;
 import br.com.rafaelvalentim.agro.Service.OperadorService;
 import br.com.rafaelvalentim.agro.Service.ProdutoService;
 import br.com.rafaelvalentim.agro.Service.TalhaoService;
+import br.com.rafaelvalentim.agro.Service.UrlBaseService;
 
 public class ApontamentoActivity extends AppCompatActivity {
 
@@ -106,7 +114,18 @@ public class ApontamentoActivity extends AppCompatActivity {
 
         Gson g = new Gson();
 
-        System.out.println(g.toJson(apontamento));
+        ApontamentoService apontamentoService = new ApontamentoService();
+
+        String retorno = apontamentoService.setApontamento(g.toJson(apontamento));
+
+        if(retorno.equals("200")){
+            Toast.makeText(this, "Apontamento salvo com sucesso", Toast.LENGTH_SHORT).show();
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Erro ao salvar apontamento", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public boolean isOnline() {
@@ -115,4 +134,5 @@ public class ApontamentoActivity extends AppCompatActivity {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
+
 }

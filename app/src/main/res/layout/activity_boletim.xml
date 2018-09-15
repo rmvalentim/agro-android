@@ -4,26 +4,19 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical"
-    android:gravity="center">
-
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@mipmap/ic_folha"
-        />
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Usuário"/>
-
-    <EditText
-        android:id="@+id/usuario"
+        android:text="Unidade"/>
+    <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/unidade"
+        android:focusable="true">
+    </Spinner>
 
     <View
         android:layout_width="match_parent"
@@ -34,12 +27,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Senha"/>
+        android:text="Safra"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/safra"
+        android:focusable="true">
+    </Spinner>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Observação"/>
 
     <EditText
-        android:id="@+id/senha"
+        android:id="@+id/observacao"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="text"></EditText>
 
     <View
         android:layout_width="match_parent"
@@ -49,12 +60,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Salvar Boletim"
         android:background="@color/colorPrimary"
         android:textColor="#FFFFFF"
         android:layout_margin="10dp"
-        android:focusableInTouchMode="true"
-        android:focusable="true"
-        android:onClick="realizaLogin"/>
+        android:onClick="salvarBoletim"/>
+
+
 
 </LinearLayout>
